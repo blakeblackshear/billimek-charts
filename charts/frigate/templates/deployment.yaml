@@ -62,6 +62,11 @@ spec:
             {{- end }}
             - name: FRIGATE_RTSP_PASSWORD
               value: "{{ .Values.rtspPassword }}"
+          envFrom:
+          {{- range .Values.extraSecretForEnvFrom }}
+            - secretRef:
+                name: {{ . }}
+          {{- end }}
           volumeMounts:
             {{- if .Values.coral.enabled }}
             - mountPath: /dev/bus/usb
