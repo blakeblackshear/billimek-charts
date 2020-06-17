@@ -14,6 +14,9 @@ image:
 
 rtspPassword: password
 
+# secret name containing environment variables for frigate
+extraSecretForEnvFrom: ""
+
 coral:
   enabled: false
   hostPath: /dev/bus/usb
