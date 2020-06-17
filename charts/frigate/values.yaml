@@ -15,7 +15,7 @@ image:
 rtspPassword: password
 
 # secret name containing environment variables for frigate
-extraSecretForEnvFrom: ""
+extraSecretForEnvFrom: []
 
 coral:
   enabled: false
