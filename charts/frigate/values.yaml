@@ -170,10 +170,12 @@ config: |
 # Probes configuration
 probes:
   liveness:
+    enabled: true
     initialDelaySeconds: 30
     failureThreshold: 5
     timeoutSeconds: 10
   readiness:
+    enabled: true
     initialDelaySeconds: 30
     failureThreshold: 5
     timeoutSeconds: 10
