@@ -80,6 +80,10 @@ spec:
               name: config
             - name: dshm
               mountPath: /dev/shm
+            {{- if .Values.clips.enabled }}
+            - name: clips
+              mountPath: /clips
+            {{- end }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       volumes:
@@ -95,6 +99,11 @@ spec:
           emptyDir:
             medium: Memory
             sizeLimit: {{ .Values.shmSize }}
+        {{- if .Values.clips.enabled }}
+        - name: clips
+          persistentVolumeClaim:
+            claimName: {{ .Values.clips.existingClaim }}
+        {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

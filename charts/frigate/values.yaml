@@ -21,6 +21,10 @@ coral:
   enabled: false
   hostPath: /dev/bus/usb
 
+clips:
+  enabled: false
+  existingClaim: clip-storage
+
 shmSize: 1Gi
 
 imagePullSecrets: []
