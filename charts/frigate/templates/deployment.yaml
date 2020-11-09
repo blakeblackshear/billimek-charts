@@ -82,7 +82,7 @@ spec:
               mountPath: /dev/shm
             {{- if .Values.clips.enabled }}
             - name: clips
-              mountPath: /clips
+              mountPath: /media/frigate/clips
             {{- end }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
