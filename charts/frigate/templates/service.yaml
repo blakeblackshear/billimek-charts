@@ -37,6 +37,10 @@ spec:
   externalTrafficPolicy: {{ .Values.service.externalTrafficPolicy }}
   {{- end }}
   ports:
+    - name: rtmp
+      port: 1935
+      protocol: TCP
+      targetPort: rtmp
     - name: http
       port: {{ .Values.service.port }}
       protocol: TCP

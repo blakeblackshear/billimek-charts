@@ -39,6 +39,9 @@ spec:
             - name: http
               containerPort: 5000
               protocol: TCP
+            - name: rtmp
+              containerPort: 1935
+              protocol: TCP
           {{- if .Values.probes.liveness.enabled }}
           livenessProbe:
             httpGet:
