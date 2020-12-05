@@ -83,10 +83,7 @@ spec:
               name: config
             - name: dshm
               mountPath: /dev/shm
-            {{- if .Values.clips.enabled }}
-            - name: clips
-              mountPath: /media/frigate/clips
-            {{- end }}
+            {{- if .Values.extraVolumeMounts }}{{ toYaml .Values.extraVolumeMounts | trim | nindent 12 }}{{ end }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       volumes:
@@ -102,11 +99,7 @@ spec:
           emptyDir:
             medium: Memory
             sizeLimit: {{ .Values.shmSize }}
-        {{- if .Values.clips.enabled }}
-        - name: clips
-          persistentVolumeClaim:
-            claimName: {{ .Values.clips.existingClaim }}
-        {{- end }}
+        {{- if .Values.extraVolumes  }}{{ toYaml .Values.extraVolumes | trim | nindent 8 }}{{ end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

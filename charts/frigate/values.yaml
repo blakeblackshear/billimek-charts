@@ -21,9 +21,8 @@ coral:
   enabled: false
   hostPath: /dev/bus/usb
 
-clips:
-  enabled: false
-  existingClaim: clip-storage
+extraVolumes: []
+extraVolumeMounts: []
 
 shmSize: 1Gi
 
