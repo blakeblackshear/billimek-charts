@@ -18,9 +18,9 @@ spec:
       labels:
         app.kubernetes.io/name: {{ include "frigate.name" . }}
         app.kubernetes.io/instance: {{ .Release.Name }}
-      {{- if .Values.podAnnotations }}
       annotations:
         checksum/configmap: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
+      {{- if .Values.podAnnotations }}
         {{- range $key, $value := .Values.podAnnotations }}
         {{ $key }}: {{ $value | quote }}
         {{- end }}
